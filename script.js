@@ -4,6 +4,8 @@
  *  - url is de youtube url die moet afspelen in de tooltip
  *  - icon is de image uit /images/pins die hij moet tonen als icoon. Je moet de extensie niet meegeven.
  */
+
+const videoWidth = document.body.clientWidth / 3;
 const markers = [
     {
         name: 'test',
@@ -64,7 +66,8 @@ function enableTooltips() {
              * if the tooltip is too wide to fit on the screen. The 580px is 
              * only a cosmetic change at the last second
              */
-            instance.popper.querySelector('.tippy-box').style.maxWidth = '580px';
+            instance.popper.querySelector('.tippy-box').style.maxWidth = '100%';
+            instance.popper.querySelector('.tippy-box').style.width = videoWidth + 'px';
         },
     });
 }
@@ -74,8 +77,8 @@ function enableTooltips() {
  */
 function createYoutubeEmbed(url) {
     const frame = document.createElement('iframe');
-    frame.width = '560';
-    frame.height = '315';
+    frame.width = '100%';
+    frame.height = videoWidth / 2 + 'px';
     frame.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
     frame.setAttribute('frameborder', '0');
     frame.setAttribute('allowfullscreen', 'allowfullscreen');
